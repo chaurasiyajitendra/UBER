@@ -2,8 +2,8 @@
 
 ## Endpoint: POST /users/register
 
-##http method 
-  post
+## http method 
+post
 
 ### Description
 
