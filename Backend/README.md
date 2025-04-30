@@ -433,3 +433,156 @@ Content-Type: application/json
   "message": "Caption already exist"
 }
 ```
+
+
+
+
+## Endpoint: POST /captain/login
+
+### HTTP Method
+`POST`
+
+### Description
+This endpoint is used to log in a captain. It validates the input credentials, checks if the email and password match, and returns a token upon successful authentication.
+
+### Request Body
+The request body should be a JSON object with the following structure:
+
+```json
+{
+  "email": "string (valid email format, required)",
+  "password": "string (min 6 characters, required)"
+}
+```
+
+### Validation Rules
+- `email`: Must be a valid email address and is required.
+- `password`: Must be at least 6 characters long and is required.
+
+### Response
+
+#### Success Response
+- **Status Code**: `201 Created`
+- **Body**:
+
+```json
+{
+  "token": "string",
+  "captain": {
+    "_id": "string",
+    "fullname": {
+      "firstname": "string",
+      "lastname": "string"
+    },
+    "email": "string",
+    "vehicle": {
+      "color": "string",
+      "plate": "string",
+      "capcity": "integer",
+      "vehicleType": "string"
+    }
+  }
+}
+```
+
+#### Error Response
+- **Status Code**: `400 Bad Request`
+- **Body**:
+
+```json
+{
+  "error": [
+    {
+      "msg": "string",
+      "param": "string",
+      "location": "string"
+    }
+  ]
+}
+```
+
+- **Status Code**: `401 Unauthorized`
+- **Body**:
+
+```json
+{
+  "message": "Invalid Email or Password"
+}
+```
+
+---
+
+## Endpoint: GET /captain/logout
+
+### HTTP Method
+`GET`
+
+### Description
+This endpoint is used to log out a captain. It clears the authentication token from cookies and adds the token to a blacklist to prevent reuse.
+
+### Response
+
+#### Success Response
+- **Status Code**: `200 OK`
+- **Body**:
+
+```json
+{
+  "message": "Logged out"
+}
+```
+
+#### Error Response
+- **Status Code**: `401 Unauthorized`
+- **Body**:
+
+```json
+{
+  "message": "Unauthorized"
+}
+```
+
+---
+
+## Endpoint: GET /captain/profile
+
+### HTTP Method
+`GET`
+
+### Description
+This endpoint is used to retrieve the profile of the currently authenticated captain.
+
+### Response
+
+#### Success Response
+- **Status Code**: `200 OK`
+- **Body**:
+
+```json
+{
+  "captain": {
+    "_id": "string",
+    "fullname": {
+      "firstname": "string",
+      "lastname": "string"
+    },
+    "email": "string",
+    "vehicle": {
+      "color": "string",
+      "plate": "string",
+      "capcity": "integer",
+      "vehicleType": "string"
+    }
+  }
+}
+```
+
+#### Error Response
+- **Status Code**: `401 Unauthorized`
+- **Body**:
+
+```json
+{
+  "message": "Unauthorized"
+}
+```

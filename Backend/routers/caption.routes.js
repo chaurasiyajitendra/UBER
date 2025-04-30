@@ -3,6 +3,7 @@ const router = express.Router();
 const {body} = require('express-validator');
 const captainModel = require('../modules/caption.module');
 const captionController = require("../controllers/captain.controller");
+const authMiddleware = require('../middleware/auth.middleware')
 
 
 router.post('/register',[
@@ -17,5 +18,16 @@ router.post('/register',[
 ],
 captionController.registerCaption
 )
+
+router.post("/login",[
+    body('email').isEmail().withMessage("Invalid Email"),
+    body('password').isLength({min:6}).withMessage("password must be contain 6 latter")
+],
+captionController.loginCaption
+)
+
+router.get("/profile",authMiddleware.authCaptain,captionController.getCaptainProfile);
+
+router.get("/logout",authMiddleware.authCaptain,captionController.loggedOutCaptain);
 
 module.exports = router;
