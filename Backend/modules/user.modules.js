@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     fullname:{
         firstname:{
             type: String,
-            required:true,
+                                    
             minlength:[3,'First Name must be at lest 3 Character long' ]
         },
         lastname:{
