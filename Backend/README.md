@@ -2,6 +2,9 @@
 
 ## Endpoint: POST /users/register
 
+## http method 
+post
+
 ### Description
 
 This endpoint is used to register a new user. It validates the input data, hashes the password, and creates a new user in the database. Upon successful registration, it returns a token and the user details.
