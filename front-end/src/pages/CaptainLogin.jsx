@@ -1,0 +1,49 @@
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
+
+const CaptainLogin = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [captaindata, setCaptaindata] = useState({})
+    const submitHandler = (e)=>{
+        e.preventDefault();
+        setCaptaindata({
+            email:email,
+            password:password
+        });
+        console.log(captaindata);
+        setEmail('');
+        setPassword('');
+    }
+  return (
+    <div>
+        <div className='h-screen w-full p-7 flex flex-col'>
+            <div className='w-15 mb-8'><img className='w-full object-cover' src="https://pngimg.com/d/uber_PNG24.png" alt="" /></div>
+            <form onSubmit={(e)=>{submitHandler(e)}} action="">
+                <h3 className='text-2xl font-medium'>What is You'r email ?</h3>
+                <input 
+                value={email} 
+                onChange={(e)=>{setEmail(e.target.value)}} 
+                className='bg-[#eeeeee] w-full mt-4  px-4 py-2 border-zinc-300 rounded-md border-2 text-xl' 
+                required type="email" 
+                placeholder='captain@example.com' 
+                />
+                <h3 className='text-2xl font-medium mt-6'>Password</h3>
+                <input 
+                value={password}
+                onChange={(e)=>{setPassword(e.target.value)}}
+                required 
+                className='bg-[#eeeeee] w-full mt-4  px-4 py-2 border-zinc-300 rounded-md border-2 text-xl'  
+                type="password" 
+                placeholder='Password' 
+                />
+                <button className='block mt-8 text-xl font-semibold py-3 rounded-lg w-full bg-black text-white '>Login</button>
+            </form>
+            <p className='mt-4 text-md font-medium '>Join us As Patner <Link className='text-blue-600 underline' to={'/captain-register'}>Create a New Account ?</Link></p>
+            <Link to={'/login'} className='flex items-center justify-center mt-2 text-xl font-semibold py-3 rounded-lg w-full bg-[#744C3A] text-white '>Login as User</Link>
+        </div>
+    </div>
+  )
+}
+
+export default CaptainLogin
