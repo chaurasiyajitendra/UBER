@@ -14,7 +14,7 @@ router.post('/register',[
     body('vehicle.color').isLength({min:3}).withMessage("vehicle color must be containe 3 laters"),
     body('vehicle.plate').isLength({min:10}).withMessage("Vehicle number plate must be containe 10 laters"),
     body("vehicle.capcity").isInt({min:1}).withMessage("Vehicle capcity must be 1"),
-    body('vehicle.vehicleType').isIn(['car','motorcycle','auto']).withMessage("Invalid Type")
+    body('vehicle.vehicleType').isIn(['car','moto','auto']).withMessage("Invalid Type")
 ],
 captionController.registerCaption
 )

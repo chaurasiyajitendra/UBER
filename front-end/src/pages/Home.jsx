@@ -3,8 +3,6 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { UserDataContext } from '../context/userContext';
 const Home = () => {
-  const ans = useContext(UserDataContext)
-  console.log(ans);
   
   return (
     <div>

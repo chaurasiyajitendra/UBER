@@ -29,7 +29,7 @@ module.exports.registerCaption = async (req, res ,next)=>{
     });
     const token = captain.generateAuthToken();
     res.status(201).json({token,captain});
-}
+} 
 
 module.exports.loginCaption = async (req ,res , next)=>{
     const error = validationResult(req);
@@ -50,7 +50,7 @@ module.exports.loginCaption = async (req ,res , next)=>{
     }
     const token = captain.generateAuthToken();
     res.cookie('token',token);
-    res.status(201).json({token,captain});
+    res.status(200).json({token,captain});
 }
 
 module.exports.getCaptainProfile = async (req,res,next)=>{

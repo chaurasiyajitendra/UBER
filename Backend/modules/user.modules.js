@@ -13,19 +13,19 @@ const userSchema = new mongoose.Schema({
             type: String,
             minlength:[3,'First Name must be at lest 3 Character long' ]
         }},
-        email:{
-            type:String,
-            required:true,
-            unique:true,
-            minlength:[5,'email must be 5 character long ']
+    email:{
+        type:String,
+        required:true,
+        unique:true,
+        minlength:[5,'email must be 5 character long ']
         },
-        password:{
-            type:String,
-            required:true,
-            select:false
+    password:{
+        type:String,
+        required:true,
+        select:false
         },
-        stoketId:{
-            type:String
+    stoketId:{
+        type:String
         }
 })
 
